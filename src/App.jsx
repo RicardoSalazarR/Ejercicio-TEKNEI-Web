@@ -24,28 +24,24 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Header userName={user} onLogout={handleLogout} />
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                user ? (
-                  <Navigate to="/users" />
-                ) : (
-                  <LoginForm onLogin={handleLogin} />
-                )
-              }
-            />
-            <Route
-              path="/users"
-              element={user ? <UsersTable /> : <Navigate to="/" />}
-            />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Header userName={user} onLogout={handleLogout} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            user ? (
+              <Navigate to="/users" />
+            ) : (
+              <LoginForm onLogin={handleLogin} />
+            )
+          }
+        />
+        <Route
+          path="/users"
+          element={user ? <UsersTable /> : <Navigate to="/" />}
+        />
+      </Routes>
+      <Footer />
     </Router>
   );
 }
